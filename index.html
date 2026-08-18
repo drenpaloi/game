@@ -12,13 +12,18 @@
         }
         body {
             height: 100vh;
-            background: #0d0d0d;
+            background:
+                radial-gradient(1200px 800px at 75% 18%, rgba(75,0,130,.5), transparent 60%),
+                radial-gradient(1000px 700px at 12% 78%, rgba(0,110,200,.42), transparent 60%),
+                radial-gradient(900px 600px at 50% 48%, rgba(255,150,0,.16), transparent 55%),
+                linear-gradient(180deg, #05030f 0%, #0b0620 40%, #160a30 70%, #08040f 100%);
             overflow: hidden;
             font-family: 'Arial', sans-serif;
             color: #fff;
             position: relative;
         }
-        /* Stars background */
+        /* Breathtaking deep-space vista: nebula swirls (indigo/magenta/gold),
+           star clusters, galaxies, ethereal glow */
         body::before {
             content: '';
             position: absolute;
@@ -26,18 +31,83 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
-                radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 4%),
-                radial-gradient(white, rgba(255,255,255,.1) 1px, transparent 3%),
-                radial-gradient(white, rgba(255,255,255,.1) 1px, transparent 2%),
-                radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 1px, transparent 3%);
-            background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
-            background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
-            animation: twinkle 10s linear infinite;
+            background-image:
+                /* distant star clusters */
+                radial-gradient(1px 1px at 8% 12%, rgba(255,255,255,.95), transparent 50%),
+                radial-gradient(1.5px 1.5px at 14% 38%, rgba(255,255,255,.8), transparent 50%),
+                radial-gradient(1px 1px at 21% 62%, rgba(255,235,190,.9), transparent 50%),
+                radial-gradient(2px 2px at 30% 20%, rgba(255,255,255,.9), transparent 50%),
+                radial-gradient(1px 1px at 38% 78%, rgba(255,255,255,.75), transparent 50%),
+                radial-gradient(1.5px 1.5px at 45% 30%, rgba(255,220,255,.85), transparent 50%),
+                radial-gradient(1px 1px at 52% 55%, rgba(255,255,255,.7), transparent 50%),
+                radial-gradient(2px 2px at 58% 85%, rgba(255,255,255,.9), transparent 50%),
+                radial-gradient(1px 1px at 66% 15%, rgba(255,245,215,.85), transparent 50%),
+                radial-gradient(1.5px 1.5px at 73% 42%, rgba(255,255,255,.8), transparent 50%),
+                radial-gradient(1px 1px at 80% 68%, rgba(255,255,255,.75), transparent 50%),
+                radial-gradient(2px 2px at 87% 25%, rgba(255,255,255,.9), transparent 50%),
+                radial-gradient(1px 1px at 93% 55%, rgba(255,235,190,.8), transparent 50%),
+                radial-gradient(1.5px 1.5px at 17% 88%, rgba(255,255,255,.85), transparent 50%),
+                radial-gradient(1px 1px at 64% 5%, rgba(255,255,255,.8), transparent 50%),
+                radial-gradient(1px 1px at 42% 95%, rgba(255,255,255,.7), transparent 50%),
+                /* spiral galaxy hint */
+                conic-gradient(from 210deg at 72% 28%, transparent 0deg, rgba(255,255,255,.05) 40deg, rgba(170,110,255,.14) 95deg, rgba(255,255,255,.04) 150deg, transparent 200deg),
+                /* vibrant nebula clouds: indigo, magenta, gold dust */
+                radial-gradient(520px 360px at 78% 20%, rgba(150,60,255,.3), transparent 65%),
+                radial-gradient(460px 330px at 18% 80%, rgba(255,40,160,.24), transparent 65%),
+                radial-gradient(400px 280px at 55% 45%, rgba(255,200,60,.14), transparent 60%),
+                radial-gradient(620px 420px at 92% 72%, rgba(70,80,220,.28), transparent 65%),
+                radial-gradient(340px 260px at 30% 45%, rgba(255,120,200,.12), transparent 60%),
+                radial-gradient(300px 240px at 68% 75%, rgba(255,215,120,.1), transparent 60%);
+            animation: twinkle 24s ease-in-out infinite alternate;
         }
         @keyframes twinkle {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            from { opacity: .8; transform: scale(1); }
+            to { opacity: 1; transform: scale(1.05); }
+        }
+        /* Decorative planets */
+        .planet {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: .85;
+        }
+        .planet-1 {
+            width: 90px; height: 90px; top: 10%; left: 7%;
+            background: radial-gradient(circle at 32% 30%, #ffe3b0, #d98a4a 55%, #7a3b1e);
+            box-shadow: 0 0 45px rgba(255,180,110,.45);
+        }
+        .planet-2 {
+            width: 150px; height: 150px; bottom: 8%; right: 5%;
+            background: radial-gradient(circle at 35% 32%, #b8e4ff, #2a6fd6 55%, #123a7a);
+            box-shadow: 0 0 55px rgba(110,180,255,.4);
+        }
+        .planet-3 {
+            width: 46px; height: 46px; top: 58%; left: 68%;
+            background: radial-gradient(circle at 32% 30%, #ffc0d8, #e0458a 55%, #7a123a);
+            box-shadow: 0 0 28px rgba(255,110,180,.45);
+        }
+        /* Shooting stars */
+        .shooting-star {
+            position: absolute;
+            width: 130px; height: 2px;
+            background: linear-gradient(90deg, rgba(255,255,255,.95), transparent);
+            border-radius: 2px;
+            opacity: 0;
+            top: 12%; left: -15%;
+            transform: rotate(-32deg);
+            animation: shoot 7s linear infinite;
+            pointer-events: none;
+        }
+        .shooting-star-2 {
+            top: 40%; left: -20%;
+            animation-delay: 3.5s;
+            animation-duration: 9s;
+        }
+        @keyframes shoot {
+            0% { transform: translate(0, 0) rotate(-32deg); opacity: 0; }
+            4% { opacity: 1; }
+            18% { transform: translate(70vw, 40vh) rotate(-32deg); opacity: 0; }
+            100% { transform: translate(70vw, 40vh) rotate(-32deg); opacity: 0; }
         }
         .screen {
             position: absolute;
@@ -64,7 +134,7 @@
         .character-options {
             display: flex;
             gap: 30px;
-            margin-bottom: 30px;
+            margin-bottom: 70px;
         }
         .character-option {
             position: relative;
@@ -90,6 +160,27 @@
             border: 3px solid;
             transition: all 0.3s;
         }
+        .character-circle.scout-sprite {
+            background-image: url('assets/scout.png');
+            background-size: cover;
+            background-position: center;
+            font-size: 0; /* hide the emoji fallback */
+            border-color: #ff4500;
+        }
+        .character-circle.explorer-sprite {
+            background-image: url('assets/explorer.png');
+            background-size: cover;
+            background-position: center;
+            font-size: 0; /* hide the emoji fallback */
+            border-color: #1e90ff;
+        }
+        .character-circle.pilot-sprite {
+            background-image: url('assets/pilot.png');
+            background-size: cover;
+            background-position: center;
+            font-size: 0; /* hide the emoji fallback */
+            border-color: #32cd32;
+        }
         .character-option.selected .character-circle {
             transform: scale(1.1);
             box-shadow: 0 0 15px currentColor;
@@ -100,16 +191,36 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
+        .character-desc {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,.7);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
+        }
+        #charLabel {
+            position: absolute;
+            top: 60px;
+            left: 20px;
+            font-size: 0.9rem;
+            background: rgba(0,0,0,.5);
+            padding: 3px 10px;
+            border-radius: 5px;
+            opacity: 0.85;
+        }
         #startButton {
-            padding: 15px 30px;
-            font-size: 1.2rem;
+            padding: 20px 50px;
+            font-size: 1.35rem;
             background: rgba(0,191,255,.2);
             border: 2px solid rgba(0,191,255,.5);
             color: #fff;
-            border-radius: 5px;
+            border-radius: 40px;
             cursor: pointer;
             transition: all 0.3s;
             font-weight: bold;
+            margin-top: 10px;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
         }
         #startButton:disabled {
             opacity: 0.5;
@@ -126,20 +237,17 @@
             width: 100%;
             height: 100%;
         }
-        #character {
+        #plank {
             position: absolute;
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            border: 3px solid;
-            transition: left 0.1s;
+            width: 110px;
+            height: 14px;
+            border-radius: 7px;
+            background: linear-gradient(180deg, #ffd700, #b8860b);
+            border: 2px solid #fff8dc;
+            box-shadow: 0 0 15px rgba(255,215,0,.8), 0 0 30px rgba(255,215,0,.4);
         }
         .star {
             position: absolute;
@@ -149,12 +257,61 @@
             background: radial-gradient(circle, #fff, #ff0);
             border-radius: 50%;
             box-shadow: 0 0 10px rgba(255,255,255,.7);
-            animation: fall linear infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: bold;
+            line-height: 1;
+            pointer-events: none;
         }
-        @keyframes fall {
-            to { transform: translateY(110vh); }
+        .star-blue {
+            background: radial-gradient(circle, #b8e2ff, #2a7ae0);
+            box-shadow: 0 0 12px rgba(74,166,255,.9);
+            color: #fff;
         }
-        #scoreDisplay, #livesDisplay {
+        .star-gold {
+            background: radial-gradient(circle, #fff7cc, #ffd700);
+            box-shadow: 0 0 12px rgba(255,215,0,.9);
+            color: #7a5c00;
+        }
+        .star-rare {
+            background: radial-gradient(circle, #e6ccff, #8a2be2);
+            box-shadow: 0 0 12px rgba(199,125,255,.9);
+            color: #fff;
+        }
+        .star-diamond {
+            background: radial-gradient(circle, #ffffff, #8ee7ff 60%, #00bfff);
+            box-shadow: 0 0 14px rgba(0,191,255,.95);
+            color: #004466;
+        }
+        .star-magnet {
+            background: radial-gradient(circle, #e6ccff, #6a0dad);
+            box-shadow: 0 0 12px rgba(138,43,226,.9);
+            font-size: 12px;
+        }
+        .star-heart {
+            background: radial-gradient(circle, #ffccd5, #e8456b);
+            box-shadow: 0 0 12px rgba(232,69,107,.9);
+            font-size: 12px;
+        }
+        #magnetIndicator {
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            font-size: 1rem;
+            background: rgba(138,43,226,.75);
+            padding: 5px 14px;
+            border-radius: 20px;
+            display: none;
+            color: #fff;
+            border: 1px solid rgba(255,255,255,.5);
+            z-index: 5;
+        }
+        #magnetIndicator.show {
+            display: block;
+        }
+        #scoreDisplay {
             position: absolute;
             top: 20px;
             left: 20px;
@@ -162,10 +319,239 @@
             background: rgba(0,0,0,.5);
             padding: 5px 10px;
             border-radius: 5px;
+            z-index: 6;
         }
-        #livesDisplay {
-            left: auto;
+        /* Neon tech bars */
+        .bar {
+            position: absolute;
+            left: 20px;
+            width: 180px;
+            height: 16px;
+            border-radius: 8px;
+            background: rgba(0,0,0,.55);
+            border: 1px solid rgba(255,255,255,.25);
+            overflow: hidden;
+            z-index: 6;
+        }
+        #healthBar {
+            top: 60px;
+        }
+        #energyBar {
+            top: 84px;
+        }
+        .bar-fill {
+            height: 100%;
+            width: 60%;
+            border-radius: 8px;
+            transition: width .25s ease;
+        }
+        .bar-fill.health {
+            background: linear-gradient(90deg, #00ff88, #00cc66);
+            box-shadow: 0 0 12px rgba(0,255,136,.8);
+        }
+        .bar-fill.energy {
+            background: linear-gradient(90deg, #00ccff, #0088ff);
+            box-shadow: 0 0 12px rgba(0,204,255,.8);
+        }
+        .bar-label {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .75rem;
+            color: #fff;
+            text-shadow: 0 0 4px rgba(0,0,0,.9);
+            z-index: 2;
+        }
+        /* Shop button + panel */
+        #shopButton {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,215,0,.6);
+            background: rgba(80,50,0,.6);
+            color: #fff;
+            font-size: 1.6rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 7;
+            transition: all .2s;
+        }
+        #shopButton:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 18px rgba(255,215,0,.7);
+        }
+        #shopPanel {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: min(340px, 90%);
+            background: rgba(10,8,30,.92);
+            border: 1px solid rgba(255,215,0,.5);
+            border-radius: 14px;
+            padding: 14px;
+            z-index: 10;
+            box-shadow: 0 0 40px rgba(255,215,0,.25);
+        }
+        #shopPanel.hidden {
+            display: none;
+        }
+        .shop-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+        #shopXp {
+            font-size: .9rem;
+            color: #9fe8ff;
+        }
+        #shopClose {
+            background: rgba(255,255,255,.1);
+            border: 1px solid rgba(255,255,255,.3);
+            color: #fff;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            cursor: pointer;
+            font-size: .9rem;
+        }
+        .shop-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,.06);
+            border: 1px solid rgba(255,255,255,.15);
+            border-radius: 10px;
+            padding: 8px 10px;
+            margin: 8px 0;
+        }
+        .shop-item-emoji {
+            font-size: 1.5rem;
+        }
+        .shop-item-info {
+            flex: 1;
+        }
+        .shop-item-name {
+            font-weight: bold;
+            font-size: .9rem;
+        }
+        .shop-item-desc {
+            font-size: .75rem;
+            color: #aac;
+        }
+        .buy-btn {
+            background: rgba(255,215,0,.15);
+            border: 1px solid rgba(255,215,0,.5);
+            color: #ffd700;
+            border-radius: 20px;
+            padding: 6px 14px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: .8rem;
+            transition: all .2s;
+        }
+        .buy-btn:hover:not(:disabled) {
+            background: rgba(255,215,0,.35);
+        }
+        .buy-btn:disabled {
+            opacity: .45;
+            cursor: not-allowed;
+        }
+        /* Inventory chips */
+        #inventory {
+            position: absolute;
+            top: 112px;
+            left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            z-index: 6;
+        }
+        .inv-chip {
+            font-size: .75rem;
+            background: rgba(0,0,0,.5);
+            border: 1px solid rgba(255,255,255,.2);
+            border-radius: 12px;
+            padding: 2px 10px;
+            color: #cfe8ff;
+            white-space: nowrap;
+        }
+        /* Star legend (index on the side) */
+        #starLegend {
+            position: absolute;
             right: 20px;
+            top: 60px;
+            background: rgba(0,0,0,.55);
+            border: 1px solid rgba(255,255,255,.2);
+            border-radius: 10px;
+            padding: 8px 12px;
+            font-size: .75rem;
+            z-index: 6;
+            min-width: 120px;
+        }
+        .legend-title {
+            font-weight: bold;
+            margin-bottom: 6px;
+            color: #ffd700;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin: 3px 0;
+            color: #dceeff;
+        }
+        .legend-item b {
+            margin-left: auto;
+            color: #fff;
+        }
+        .legend-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 9px;
+            font-weight: bold;
+            line-height: 1;
+        }
+        .dot-normal { background: radial-gradient(circle, #fff, #ff0); }
+        .dot-blue { background: radial-gradient(circle, #b8e2ff, #2a7ae0); color: #fff; }
+        .dot-gold { background: radial-gradient(circle, #fff7cc, #ffd700); color: #7a5c00; }
+        .dot-rare { background: radial-gradient(circle, #e6ccff, #8a2be2); color: #fff; }
+        .dot-diamond { background: radial-gradient(circle, #fff, #8ee7ff 60%, #00bfff); color: #004466; }
+        .dot-magnet { background: radial-gradient(circle, #e6ccff, #6a0dad); color: #fff; }
+        .dot-heart { background: radial-gradient(circle, #ffccd5, #e8456b); color: #fff; }
+        /* Character skill pill on select screen */
+        .character-skill {
+            font-size: .75rem;
+            background: rgba(0,204,255,.18);
+            border: 1px solid rgba(0,204,255,.45);
+            border-radius: 12px;
+            padding: 2px 10px;
+            margin-top: 4px;
+            color: #9fe8ff;
+            white-space: nowrap;
+        }
+        .character-option.selected .character-skill {
+            background: rgba(0,255,136,.2);
+            border-color: rgba(0,255,136,.6);
+            color: #aaffcc;
         }
         #gameOverScreen {
             position: absolute;
@@ -207,24 +593,70 @@
             background: rgba(255,69,0,.4);
             transform: translateY(-2px);
         }
+        #changeCharButton {
+            padding: 12px 25px;
+            font-size: 1.2rem;
+            background: rgba(0,191,255,.2);
+            border: 2px solid rgba(0,191,255,.5);
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-left: 10px;
+        }
+        #changeCharButton:hover {
+            background: rgba(0,191,255,.4);
+            transform: translateY(-2px);
+        }
+        #pauseButton {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            background: rgba(0,191,255,.2);
+            border: 2px solid rgba(0,191,255,.5);
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 5;
+        }
+        #pauseButton:hover {
+            background: rgba(0,191,255,.4);
+        }
     </style>
 </head>
 <body>
+    <!-- Deep-space decorations -->
+    <div class="planet planet-1"></div>
+    <div class="planet planet-2"></div>
+    <div class="planet planet-3"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star shooting-star-2"></div>
+
     <!-- Character Select Screen -->
     <div id="selectScreen" class="screen">
         <h1>Choose Your Character</h1>
         <div class="character-options">
             <div class="character-option" data-name="Explorer" data-color="#1e90ff">
-                <div class="character-circle">🧭</div>
+                <div class="character-circle explorer-sprite">🧭</div>
                 <div class="character-name">Explorer</div>
+                <div class="character-desc">Wide Plank</div>
+                <div class="character-skill">🍀 Lucky Find</div>
             </div>
             <div class="character-option" data-name="Scout" data-color="#ff4500">
-                <div class="character-circle">🔭</div>
+                <div class="character-circle scout-sprite">🔭</div>
                 <div class="character-name">Scout</div>
+                <div class="character-desc">Fast Stars</div>
+                <div class="character-skill">⚡ Speed Boost</div>
             </div>
             <div class="character-option" data-name="Pilot" data-color="#32cd32">
-                <div class="character-circle">✈️</div>
+                <div class="character-circle pilot-sprite">✈️</div>
                 <div class="character-name">Pilot</div>
+                <div class="character-desc">Precision</div>
+                <div class="character-skill">🚀 Afterburner</div>
             </div>
         </div>
         <button id="startButton" disabled>Start Game</button>
@@ -233,9 +665,41 @@
     <!-- Game Screen -->
     <div id="gameScreen" class="screen hidden">
         <div id="gameContainer">
-            <div id="scoreDisplay">Score: 0</div>
-            <div id="livesDisplay">Lives: 3</div>
-            <div id="character"></div>
+            <div id="scoreDisplay">XP: 0</div>
+            <div class="bar" id="healthBar">
+                <div class="bar-fill health" id="healthFill"></div>
+                <span class="bar-label" id="healthLabel">♥ 3</span>
+            </div>
+            <div class="bar" id="energyBar">
+                <div class="bar-fill energy" id="energyFill"></div>
+                <span class="bar-label" id="energyLabel">⚡</span>
+            </div>
+            <button id="pauseButton">⏸</button>
+            <div id="charLabel"></div>
+            <div id="inventory"></div>
+            <div id="magnetIndicator"></div>
+            <!-- Star legend (index on the side) -->
+            <div id="starLegend">
+                <div class="legend-title">⭐ YJET</div>
+                <div class="legend-item"><span class="legend-dot dot-normal"></span>Normal <b>+1</b></div>
+                <div class="legend-item"><span class="legend-dot dot-blue"></span>Blu <b>+2</b></div>
+                <div class="legend-item"><span class="legend-dot dot-gold"></span>Artë <b>+5</b></div>
+                <div class="legend-item"><span class="legend-dot dot-rare"></span>Rrallë <b>+10</b></div>
+                <div class="legend-item"><span class="legend-dot dot-diamond"></span>Diamant <b>+20</b></div>
+                <div class="legend-item"><span class="legend-dot dot-magnet"></span>🧲 Magnet</div>
+                <div class="legend-item"><span class="legend-dot dot-heart"></span>❤️ Zemër</div>
+            </div>
+            <!-- Shop -->
+            <button id="shopButton">🛒</button>
+            <div id="shopPanel" class="hidden">
+                <div class="shop-header">
+                    <span>🛒 DYQANI</span>
+                    <span id="shopXp">XP: 0</span>
+                    <button id="shopClose">✕</button>
+                </div>
+                <div id="shopItems"></div>
+            </div>
+            <div id="plank"></div>
         </div>
     </div>
 
@@ -243,7 +707,10 @@
     <div id="gameOverScreen" class="screen">
         <h2>Game Over</h2>
         <p id="finalScore"></p>
-        <button id="restartButton">Play Again</button>
+        <div>
+            <button id="restartButton">Play Again</button>
+            <button id="changeCharButton">Change Character</button>
+        </div>
     </div>
 
     <script>
@@ -253,24 +720,73 @@
         const startButton = document.getElementById('startButton');
         const restartButton = document.getElementById('restartButton');
         const characterOptions = document.querySelectorAll('.character-option');
-        const characterDisplay = document.getElementById('character');
+        const plank = document.getElementById('plank');
         const scoreDisplay = document.getElementById('scoreDisplay');
-        const livesDisplay = document.getElementById('livesDisplay');
+        const healthFill = document.getElementById('healthFill');
+        const healthLabel = document.getElementById('healthLabel');
+        const energyFill = document.getElementById('energyFill');
+        const energyLabel = document.getElementById('energyLabel');
         const finalScoreDisplay = document.getElementById('finalScore');
         const gameContainer = document.getElementById('gameContainer');
+        const pauseButton = document.getElementById('pauseButton');
+        const changeCharButton = document.getElementById('changeCharButton');
+        const charLabel = document.getElementById('charLabel');
+        const inventoryEl = document.getElementById('inventory');
+        const shopButton = document.getElementById('shopButton');
+        const shopPanel = document.getElementById('shopPanel');
+        const shopXp = document.getElementById('shopXp');
+        const shopItems = document.getElementById('shopItems');
+        const shopClose = document.getElementById('shopClose');
+
+        // Per-character stats: plank color, plank width, star fall speed
+        const CHARACTER_STATS = {
+            Explorer: { color1: '#1e90ff', color2: '#0044aa', width: 140, speed: 2.0 },
+            Scout:    { color1: '#ff6347', color2: '#b22222', width: 110, speed: 2.6 },
+            Pilot:    { color1: '#32cd32', color2: '#006400', width: 90,  speed: 1.4 }
+        };
+
+        // XP awarded per star type
+        const STAR_XP = { normal: 1, blue: 2, gold: 5, rare: 10, diamond: 20, magnet: 0, heart: 0 };
+
+        // Shop potions (bought with XP)
+        const POTIONS = [
+            { id: 'magnet', name: 'Magnet Potion', emoji: '🧲', cost: 300, desc: 'Tërheq yjet për 8s' },
+            { id: 'speed',  name: 'Star Speed Potion', emoji: '⚡', cost: 200, desc: 'Yje të ngadaltë për 8s' },
+            { id: 'health', name: 'Health Potion', emoji: '❤️', cost: 250, desc: '+1 jetë' },
+            { id: 'xp',     name: 'XP Boost Potion', emoji: '🚀', cost: 350, desc: 'XP ×2 për 8s' }
+        ];
+        const POTION_DURATION = 8000; // ms
+
+        // Class inventory (tools each character carries)
+        const INVENTORY = {
+            Explorer: ['🔍 Skaner Planetar', '🧗 Pajisje Ngjitjeje'],
+            Scout:    ['🔪 Thikë LaZer', '🛸 Dron Vëzhgues'],
+            Pilot:    ['💳 Kartë Aksesi', '🔧 Mjete Riparimi']
+        };
 
         let selectedCharacter = null;
         let score = 0;
         let lives = 3;
         let gameActive = false;
-        let characterX = 50; // percentage
-        const characterSpeed = 5; // pixels per frame
-        const starSpeed = 2; // pixels per frame
+        let isPaused = false;
+        let plankX = 50; // percentage (center of the plank)
+        let plankWidth = 110;
+        let plankHeight = 14;
+        let starSpeed = 2; // pixels per frame
         const starSize = 20;
         let stars = [];
         let animationFrameId = null;
         let lastStarSpawn = 0;
         const starSpawnInterval = 1500; // ms
+        let magnetActive = false;
+        let magnetTimer = 0;
+        const MAGNET_DURATION = 5000; // ms
+        let lastFrameTime = 0;
+        let currentPlankGlow = '#1e90ff';
+        // Potion effect state
+        let effect = { active: false, timer: 0, emoji: '' };
+        let skillXpMult = 1;
+        let skillSpeedFactor = 1;
 
         // Character selection
         characterOptions.forEach(option => {
@@ -279,9 +795,11 @@
                 characterOptions.forEach(opt => opt.classList.remove('selected'));
                 // Select this
                 option.classList.add('selected');
+                const name = option.dataset.name;
                 selectedCharacter = {
-                    name: option.dataset.name,
-                    color: option.dataset.color
+                    name: name,
+                    color: option.dataset.color,
+                    stats: CHARACTER_STATS[name] || CHARACTER_STATS.Explorer
                 };
                 startButton.disabled = false;
             });
@@ -295,8 +813,15 @@
             gameScreen.classList.remove('hidden');
         });
 
-        // Restart game
+        // Restart game (same character)
         restartButton.addEventListener('click', () => {
+            gameOverScreen.classList.remove('show');
+            gameScreen.classList.remove('hidden');
+            initGame();
+        });
+
+        // Change character (back to menu)
+        changeCharButton.addEventListener('click', () => {
             gameOverScreen.classList.remove('show');
             selectScreen.classList.remove('hidden');
             gameScreen.classList.add('hidden');
@@ -306,57 +831,270 @@
             selectedCharacter = null;
         });
 
+        // Pause / Resume
+        pauseButton.addEventListener('click', () => {
+            if (!gameActive) return;
+            isPaused = !isPaused;
+            pauseButton.textContent = isPaused ? '▶' : '⏸';
+        });
+
+        // Shop: render potion list
+        function renderShop() {
+            shopItems.innerHTML = POTIONS.map(p => `
+                <div class="shop-item">
+                    <span class="shop-item-emoji">${p.emoji}</span>
+                    <div class="shop-item-info">
+                        <div class="shop-item-name">${p.name}</div>
+                        <div class="shop-item-desc">${p.desc}</div>
+                    </div>
+                    <button class="buy-btn" data-potion="${p.id}" ${score < p.cost ? 'disabled' : ''}>${p.cost} XP</button>
+                </div>`).join('');
+            shopItems.querySelectorAll('.buy-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const potion = POTIONS.find(p => p.id === btn.dataset.potion);
+                    if (potion) buyPotion(potion);
+                });
+            });
+        }
+
+        // Buy + apply a potion
+        function buyPotion(potion) {
+            if (!gameActive || isPaused) return;
+            if (score < potion.cost) return;
+            score -= potion.cost;
+            if (potion.id === 'magnet') {
+                magnetActive = true;
+                magnetTimer = POTION_DURATION;
+                updateMagnetUI();
+            } else if (potion.id === 'speed') {
+                effect = { active: true, timer: POTION_DURATION, emoji: '⚡' };
+                skillSpeedFactor = 0.5;
+            } else if (potion.id === 'health') {
+                lives = Math.min(5, lives + 1);
+            } else if (potion.id === 'xp') {
+                effect = { active: true, timer: POTION_DURATION, emoji: '🚀' };
+                skillXpMult = 2;
+            }
+            updateUI();
+            updateEffectUI();
+            renderShop();
+        }
+
+        // Shop open/close
+        shopButton.addEventListener('click', () => {
+            if (!gameActive || isPaused) return;
+            renderShop();
+            shopPanel.classList.toggle('hidden');
+        });
+        shopClose.addEventListener('click', () => {
+            shopPanel.classList.add('hidden');
+        });
+
+        // Move the plank so its center follows a pointer X position
+        function movePlankTo(clientX) {
+            if (!gameActive || isPaused) return;
+            const rect = gameContainer.getBoundingClientRect();
+            if (rect.width === 0) return;
+            const halfPlankPct = (plankWidth / 2) / rect.width * 100;
+            let x = (clientX - rect.left) / rect.width * 100;
+            x = Math.max(halfPlankPct, Math.min(100 - halfPlankPct, x));
+            plankX = x;
+            plank.style.left = `${plankX}%`;
+        }
+
+        // Mouse: plank follows the pointer
+        gameContainer.addEventListener('mousemove', (e) => {
+            movePlankTo(e.clientX);
+        });
+
+        // Touch: plank follows the finger
+        gameContainer.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            if (e.touches.length > 0) {
+                movePlankTo(e.touches[0].clientX);
+            }
+        }, { passive: false });
+
         function initGame() {
+            if (!selectedCharacter) return;
             score = 0;
             lives = 3;
-            characterX = 50;
+            plankX = 50;
+            isPaused = false;
+            pauseButton.textContent = '⏸';
             updateUI();
-            // Set character appearance
-            characterDisplay.style.backgroundColor = selectedCharacter.color;
-            characterDisplay.style.borderColor = selectedCharacter.color;
-            characterDisplay.textContent = getCharacterIcon(selectedCharacter.name);
+
+            // Apply character-specific stats (plank look for all characters)
+            const stats = selectedCharacter.stats;
+            plankWidth = stats.width;
+            starSpeed = stats.speed;
+            plankHeight = 14;
+            plank.style.width = `${plankWidth}px`;
+            plank.style.height = `${plankHeight}px`;
+            plank.style.backgroundImage = 'none';
+            plank.style.background = `linear-gradient(180deg, ${stats.color1}, ${stats.color2})`;
+            plank.style.boxShadow = `0 0 15px ${stats.color1}, 0 0 30px ${stats.color1}`;
+            plank.style.border = '2px solid #fff8dc';
+            plank.style.borderRadius = '7px';
+            charLabel.textContent = `${selectedCharacter.name} · ${plankWidth}px · Speed ${starSpeed}`;
+            currentPlankGlow = stats.color1;
+
+            // Reset magnet state
+            magnetActive = false;
+            magnetTimer = 0;
+            updateMagnetUI();
+
+            // Reset potion effect state + UI
+            effect = { active: false, timer: 0, emoji: '' };
+            skillXpMult = 1;
+            skillSpeedFactor = 1;
+            updateEffectUI();
+
+            // Render class inventory
+            const tools = INVENTORY[selectedCharacter.name] || [];
+            inventoryEl.innerHTML = tools.map(t => `<span class="inv-chip">${t}</span>`).join('');
+
+            // Center the plank
+            plank.style.left = `${plankX}%`;
             // Clear stars
             stars.forEach(star => star.element.remove());
             stars = [];
             lastStarSpawn = performance.now();
+            lastFrameTime = performance.now();
             gameActive = true;
-            gameLoop();
-        }
-
-        function getCharacterIcon(name) {
-            switch(name) {
-                case 'Explorer': return '🧭';
-                case 'Scout': return '🔭';
-                case 'Pilot': return '✈️';
-                default: return '👤';
-            }
+            gameLoop(performance.now());
         }
 
         function updateUI() {
-            scoreDisplay.textContent = `Score: ${score}`;
-            livesDisplay.textContent = `Lives: ${lives}`;
-            finalScoreDisplay.textContent = `Final Score: ${score}`;
+            scoreDisplay.textContent = `XP: ${score}`;
+            finalScoreDisplay.textContent = `Final XP: ${score}`;
+            shopXp.textContent = `XP: ${score}`;
+            // Neon health bar (max 5 hearts)
+            const maxLives = 5;
+            healthFill.style.width = `${Math.max(0, lives / maxLives) * 100}%`;
+            healthLabel.textContent = `♥ ${lives}`;
+        }
+
+        // Energy bar = active potion effect timer
+        function updateEffectUI() {
+            if (effect.active) {
+                energyFill.style.width = `${Math.max(0, effect.timer / POTION_DURATION) * 100}%`;
+                energyLabel.textContent = `${effect.emoji} ${Math.ceil(effect.timer / 1000)}s`;
+            } else if (magnetActive) {
+                energyFill.style.width = `${Math.max(0, magnetTimer / POTION_DURATION) * 100}%`;
+                energyLabel.textContent = `🧲 ${Math.ceil(magnetTimer / 1000)}s`;
+            } else {
+                energyFill.style.width = '100%';
+                energyLabel.textContent = '⚡';
+            }
+        }
+
+        // Magnet HUD + plank glow
+        function updateMagnetUI() {
+            const indicator = document.getElementById('magnetIndicator');
+            if (magnetActive) {
+                indicator.textContent = `🧲 ${Math.ceil(magnetTimer / 1000)}s`;
+                indicator.classList.add('show');
+                plank.style.boxShadow = `0 0 25px #00ffff, 0 0 50px #00ffff`;
+            } else {
+                indicator.classList.remove('show');
+                plank.style.boxShadow = `0 0 15px ${currentPlankGlow}, 0 0 30px ${currentPlankGlow}`;
+            }
+        }
+
+        function activateMagnet() {
+            magnetActive = true;
+            magnetTimer = MAGNET_DURATION;
+            updateMagnetUI();
         }
 
         function gameLoop(timestamp) {
             if (!gameActive) return;
 
-            // Spawn stars
-            if (timestamp - lastStarSpawn > starSpawnInterval) {
-                spawnStar();
-                lastStarSpawn = timestamp;
-            }
+            if (!isPaused) {
+                // Guard against undefined/NaN timestamps
+                let dt = 0;
+                if (typeof timestamp === 'number' && Number.isFinite(timestamp) && Number.isFinite(lastFrameTime)) {
+                    dt = timestamp - lastFrameTime;
+                }
+                lastFrameTime = timestamp;
 
-            // Update stars
-            updateStars(timestamp);
+                // Magnet countdown
+                if (magnetActive) {
+                    magnetTimer -= dt;
+                    if (magnetTimer <= 0) {
+                        magnetActive = false;
+                        magnetTimer = 0;
+                        updateMagnetUI();
+                    } else {
+                        updateMagnetUI(); // refresh countdown text
+                    }
+                }
+
+                // Potion effect countdown
+                if (effect.active) {
+                    effect.timer -= dt;
+                    if (effect.timer <= 0) {
+                        effect.active = false;
+                        skillXpMult = 1;
+                        skillSpeedFactor = 1;
+                    }
+                }
+                updateEffectUI();
+
+                // Spawn stars
+                if (timestamp - lastStarSpawn > starSpawnInterval) {
+                    spawnStar();
+                    lastStarSpawn = timestamp;
+                }
+
+                // Update stars
+                updateStars(timestamp);
+            } else {
+                lastFrameTime = timestamp;
+            }
 
             // Request next frame
             animationFrameId = requestAnimationFrame(gameLoop);
         }
 
+        // Weighted random star type
+        function pickStarType() {
+            const r = Math.random();
+            if (r < 0.35) return 'normal';    // +1 XP
+            if (r < 0.55) return 'blue';      // +2 XP
+            if (r < 0.70) return 'gold';      // +5 XP
+            if (r < 0.78) return 'rare';      // +10 XP
+            if (r < 0.81) return 'diamond';   // +20 XP
+            if (r < 0.91) return 'magnet';    // magnet power-up
+            return 'heart';                   // +1 life
+        }
+
         function spawnStar() {
             const star = document.createElement('div');
             star.className = 'star';
+            const type = pickStarType();
+
+            if (type === 'blue') {
+                star.classList.add('star-blue');
+                star.textContent = '2';
+            } else if (type === 'gold') {
+                star.classList.add('star-gold');
+                star.textContent = '5';
+            } else if (type === 'rare') {
+                star.classList.add('star-rare');
+                star.textContent = '10';
+            } else if (type === 'diamond') {
+                star.classList.add('star-diamond');
+                star.textContent = '20';
+            } else if (type === 'magnet') {
+                star.classList.add('star-magnet');
+                star.textContent = '🧲';
+            } else if (type === 'heart') {
+                star.classList.add('star-heart');
+                star.textContent = '❤️';
+            }
+
             // Random x position within container, ensuring star fully visible
             const x = Math.random() * (gameContainer.clientWidth - starSize);
             star.style.left = `${x}px`;
@@ -365,32 +1103,49 @@
             stars.push({
                 element: star,
                 x: x,
-                y: -starSize
+                y: -starSize,
+                type: type
             });
         }
 
         function updateStars(timestamp) {
-            stars.forEach((star, index) => {
-                // Move star down
-                star.y += starSpeed;
+            for (let i = stars.length - 1; i >= 0; i--) {
+                const star = stars[i];
+
+                // Magnet attraction: pull stars toward the plank's X
+                if (magnetActive && star.type !== 'magnet') {
+                    const targetX = gameContainer.clientWidth * (plankX / 100);
+                    star.x += (targetX - star.x) * 0.06;
+                }
+
+                // Move star down (skill speed factor applies)
+                star.y += starSpeed * skillSpeedFactor;
+                star.element.style.left = `${star.x}px`;
                 star.element.style.top = `${star.y}px`;
 
-                // Check if star is caught (reached character zone)
-                const characterBottom = gameContainer.clientHeight - 80; // approx bottom of character
-                if (star.y > characterBottom) {
-                    // Check horizontal overlap
-                    const characterLeft = gameContainer.clientWidth * (characterX/100) - 40; // half width
-                    const characterRight = characterLeft + 80;
+                // Check if star reaches the plank's vertical zone
+                const catchZone = gameContainer.clientHeight - plankHeight - 20; // top of the plank
+                if (star.y + starSize >= catchZone) {
+                    // Check horizontal overlap with the plank
+                    const plankLeft = gameContainer.clientWidth * (plankX/100) - plankWidth / 2;
+                    const plankRight = plankLeft + plankWidth;
                     const starLeft = star.x;
                     const starRight = star.x + starSize;
 
-                    if (starRight > characterLeft && starLeft < characterRight) {
-                        // Caught!
-                        score++;
+                    if (starRight > plankLeft && starLeft < plankRight) {
+                        // Caught! Apply effect based on star type
+                        if (star.type === 'magnet') {
+                            activateMagnet();    // magnet power-up
+                        } else if (star.type === 'heart') {
+                            lives = Math.min(5, lives + 1); // +1 life (max 5)
+                        } else {
+                            score += (STAR_XP[star.type] || 1) * skillXpMult;
+                        }
                         updateUI();
                     } else {
                         // Missed
                         lives--;
+                        if (lives < 0) lives = 0;
                         updateUI();
                         if (lives <= 0) {
                             endGame();
@@ -398,61 +1153,42 @@
                     }
                     // Remove star
                     star.element.remove();
-                    stars.splice(index, 1);
+                    stars.splice(i, 1);
+                    continue;
                 }
 
-                // Remove if off screen bottom (should be caught above, but safety)
+                // Remove if off screen bottom (safety net)
                 if (star.y > gameContainer.clientHeight) {
                     star.element.remove();
-                    stars.splice(index, 1);
+                    stars.splice(i, 1);
                 }
-            });
+            }
         }
 
         function endGame() {
             gameActive = false;
             if (animationFrameId) cancelAnimationFrame(animationFrameId);
+            stars.forEach(star => star.element.remove());
+            stars = [];
             gameScreen.classList.add('hidden');
-            gameOverScreen.classList.remove('hidden');
+            gameOverScreen.classList.add('show');
             updateUI();
         }
 
-        // Keyboard controls for character movement
+        // Optional keyboard controls (arrow keys / A-D)
         document.addEventListener('keydown', (e) => {
-            if (!gameActive) return;
-            const containerWidth = gameContainer.clientWidth;
-            const maxX = 100 - (80 / containerWidth * 100); // ensure character stays within bounds
+            if (!gameActive || isPaused) return;
+            const rect = gameContainer.getBoundingClientRect();
+            if (rect.width === 0) return;
+            const step = 4; // percent per press
+            const halfPlankPct = (plankWidth / 2) / rect.width * 100;
             if (e.key === 'ArrowLeft' || e.key === 'a') {
-                characterX = Math.max(0, characterX - (characterSpeed / containerWidth * 100));
-                characterDisplay.style.left = `${characterX}%`;
+                plankX = Math.max(halfPlankPct, plankX - step);
             } else if (e.key === 'ArrowRight' || e.key === 'd') {
-                characterX = Math.min(maxX, characterX + (characterSpeed / containerWidth * 100));
-                characterDisplay.style.left = `${characterX}%`;
+                plankX = Math.min(100 - halfPlankPct, plankX + step);
             }
+            plank.style.left = `${plankX}%`;
         });
-
-        // Optional touch controls (left/right halves)
-        let touchStartX = 0;
-        gameContainer.addEventListener('touchstart', (e) => {
-            touchStartX = e.touches[0].clientX;
-        }, { passive: true });
-        gameContainer.addEventListener('touchend', (e) => {
-            if (!gameActive) return;
-            const touchEndX = e.changedTouches[0].clientX;
-            const diff = touchEndX - touchStartX;
-            const containerWidth = gameContainer.clientWidth;
-            if (Math.abs(diff) > 30) {
-                if (diff < 0) {
-                    // swipe left
-                    characterX = Math.max(0, characterX - (characterSpeed / containerWidth * 100));
-                } else {
-                    // swipe right
-                    const maxX = 100 - (80 / containerWidth * 100);
-                    characterX = Math.min(maxX, characterX + (characterSpeed / containerWidth * 100));
-                }
-                characterDisplay.style.left = `${characterX}%`;
-            }
-        }, { passive: true });
 
         // Initialize on load (show select screen)
         window.addEventListener('load', () => {
